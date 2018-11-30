@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="1.0">
+
+    <persistence-unit name="money">
+
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+        <!--<class>com.bugakov.moneymanagment.Person</class>-->
+        <class>com.bugakov.moneymanagment.model.Incoming</class>
+        <class>com.bugakov.moneymanagment.model.BaseIdEntity</class>
+        <class>com.bugakov.moneymanagment.model.RegularTransaction</class>
+        <class>com.bugakov.moneymanagment.model.Transaction</class>
+        <class>com.bugakov.moneymanagment.model.User</class>
+        <class>com.bugakov.moneymanagment.model.IncomingType</class>
+        <class>com.bugakov.moneymanagment.model.TransactionType</class>
+        <class>com.bugakov.moneymanagment.model.Currency</class>
+        
+        
+        <properties>
+            <property name="javax.persistence.jdbc.driver"   value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url"      value="jdbc:postgresql://localhost:5432/money"/>
+            <property name="javax.persistence.jdbc.user"     value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="postgres"/>
+
+            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/>
+            <property name="openjpa.Log" value="Tool=Trace,SQL=TRACE,Remote=TRACE"/>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+        </properties>
+    </persistence-unit>
+
+
+</persistence>
