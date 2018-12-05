@@ -18,6 +18,8 @@ const Main = () => (
             <Route path='/fetch' component={FetchDemo} subreddit="reactjs"/>
             <Route path='/transactions' component={Transactions}/>
             <Route path='/incomings' component={Incomings}/>
+            <Route path='/currency' component={import('./currencies.js').Currencies}/>
+
             <Route component={Error404}/>
 
         </Switch>

@@ -1,10 +1,10 @@
 package com.bugakov.moneymanagment.model;
 
-import com.bugakov.moneymanagment.model.BaseIdEntity;
-
 import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
-public abstract class Dictionary extends BaseIdEntity {
+@MappedSuperclass
+public class Dictionary extends BaseIdEntity {
     @Column(name = "name", unique = true)
     private String name;
 
