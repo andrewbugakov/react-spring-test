@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="root"></div>
-<script src="/dist/build/static/js/bundle.min.js"></script>
+<script src="bundle.min.js"></script>
 
 <!--
   This HTML file is a template.

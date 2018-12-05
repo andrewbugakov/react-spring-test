@@ -7,15 +7,18 @@
 	http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-	<mvc:cors>
-		<mvc:mapping path="/**" />
-	</mvc:cors>
+
 	<context:component-scan base-package="com.bugakov" />
 	<mvc:annotation-driven />
 	<bean name="ormHelper" class="com.bugakov.moneymanagment.dao.ORMHelper"/>
 	<bean name="entityManager" class="javax.persistence.EntityManager" factory-bean="ormHelper" factory-method="entityManager"/>
 	<bean name="CurrencyDao" class="com.bugakov.moneymanagment.dao.CurrencyDao">
 		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+
+	<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name = "prefix" value = "/WEB-INF/jsp/" />
+		<property name = "suffix" value = ".jsp" />
 	</bean>
 	<!--<bean class="com.bugakov.moneymanagment.service.CurrencyService">-->
 		<!--<constructor-arg name="dao" ref="CurrencyDao"/>-->
