@@ -5,6 +5,7 @@ import FetchDemo from './fetchdemo.js'
 import Transactions from './transactions.js'
 import Incomings from './incomings.js'
 import Error404 from './404.js'
+import Currencies from "./currencies";
 // The Main component renders one of the three provided
 // Routes (provided that one matches). Both the /roster
 // and /schedule routes will match any pathname that starts
@@ -18,7 +19,7 @@ const Main = () => (
             <Route path='/fetch' component={FetchDemo} subreddit="reactjs"/>
             <Route path='/transactions' component={Transactions}/>
             <Route path='/incomings' component={Incomings}/>
-            <Route path='/currency' component={import('./currencies.js').Currencies}/>
+            <Route path='/currency' component={Currencies}/>
 
             <Route component={Error404}/>
 
