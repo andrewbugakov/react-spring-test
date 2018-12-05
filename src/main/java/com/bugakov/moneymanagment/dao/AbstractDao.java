@@ -20,24 +20,24 @@ public class AbstractDao<T extends BaseIdEntity> {
         this.clazz = clazz;
     }
 
-    public void create(T entity) {
+    public synchronized void create(T entity) {
         doInTransaction(entityManager, entity, entityManager::persist);
     }
 
-    public void update(T entity) {
+    public synchronized void update(T entity) {
         doInTransaction(entityManager, entity, entityManager::merge);
     }
 
-    public void delete(T entity) {
+    public synchronized void delete(T entity) {
         doInTransaction(entityManager, entity, entityManager::remove);
     }
 
-    public void delete(Long id) {
+    public synchronized void delete(Long id) {
         T remove = entityManager.find(clazz, id);
         delete(remove);
     }
 
-    public List<T> findAll() {
+    public synchronized List<T> findAll() {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = cb.createQuery(clazz);
         Root<T> from = criteriaQuery.from(clazz);
@@ -46,7 +46,7 @@ public class AbstractDao<T extends BaseIdEntity> {
         return typedQuery.getResultList();
     }
 
-    public T findById(Long id) {
+    public synchronized T findById(Long id) {
         return entityManager.find(clazz, id);
     }
 }

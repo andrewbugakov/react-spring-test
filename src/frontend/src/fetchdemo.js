@@ -8,10 +8,10 @@ class FetchDemo extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`localhost:8080/currencies`)
+    axios.get(`/currencies`)
     .then(res => {
       const posts = res;
-      console.info(posts);
+      console.info(posts.data);
 
       this.setState({ posts });
     });
@@ -24,7 +24,7 @@ class FetchDemo extends React.Component {
         <h1>/r/reactjs</h1>
         <ul>
           {this.state.posts.map(post =>
-            <li key={post.id}>{post.title}</li>
+            <li key={post.id}>{post.name}</li>
           )}
         </ul>
       </div>
