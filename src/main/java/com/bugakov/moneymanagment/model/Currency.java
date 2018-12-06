@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Currency extends Dictionary {
+public class Currency extends BaseIdEntity {
     @Column(name = "name", nullable = false, insertable = true, unique = true, updatable = true)
     private String name;
 
