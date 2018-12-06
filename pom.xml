@@ -105,6 +105,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
+                    <uriEncoding>UTF-8</uriEncoding>
+
                     <path>/</path>
                 </configuration>
             </plugin>
@@ -116,7 +118,60 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <!-- Required: The following will ensure `npm install` is called
+                         before anything else during the 'Default Lifecycle' -->
+                    <execution>
+                        <id>npm install (initialize)</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <workingDirectory>src/frontend</workingDirectory>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
 
+                    <execution>
+                        <id>npm run build</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <executable>npm</executable>
+                            <workingDirectory>${basedir}/src/frontend</workingDirectory>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>cp into source dir</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <executable>cp</executable>
+                            <arguments>
+                                <argument>${basedir}/src/frontend/dist/build/static/js/bundle.min.js</argument>
+                                <argument>${basedir}/src/main/webapp/</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
 
         </plugins>
         <resources>

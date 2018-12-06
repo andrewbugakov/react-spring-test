@@ -19,7 +19,9 @@ const Main = () => (
             <Route path='/fetch' component={FetchDemo} subreddit="reactjs"/>
             <Route path='/transactions' component={Transactions}/>
             <Route path='/incomings' component={Incomings}/>
-            <Route path='/currency' component={Currencies}/>
+            <Route path='/currencies' component={Currencies}/>
+            <Route path='/currencies/:id' component={Child}/>
+
 
             <Route component={Error404}/>
 
@@ -27,5 +29,13 @@ const Main = () => (
         </BrowserRouter>  
   </main>
 )
+
+function Child({ match }) {
+    return (
+        <div>
+            <h3>ID: {match.params.id}</h3>
+        </div>
+    );
+}
 
 export default Main

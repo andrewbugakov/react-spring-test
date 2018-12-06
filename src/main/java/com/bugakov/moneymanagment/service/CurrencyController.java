@@ -10,7 +10,7 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
-@RequestMapping("/currencies")
+@RequestMapping("/api/currencies")
 public class CurrencyController implements Service<Currency, CurrencyController.Dto> {
     @Autowired
     private CurrencyDao dao;

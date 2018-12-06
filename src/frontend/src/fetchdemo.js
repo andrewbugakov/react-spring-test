@@ -9,7 +9,7 @@ class FetchDemo extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/currencies`)
+    axios.get(`/api/currencies`)
     .then(res => {
       const posts = res.data;
       this.setState({ posts });

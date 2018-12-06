@@ -1,38 +1,27 @@
 import React from 'react';
-import 'bootstrap/dist/js/bootstrap.min';
-import 'jquery/dist/jquery.slim.min';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Table from "react-bootstrap/lib/Table";
 
-
-// import ReactDOM from 'react-dom';
-import Table from 'react-bootstrap/lib/Table';
-import Button from 'react-bootstrap/lib/Button';
-
-
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import ReactDOM from "react-dom";
-import FetchDemo from "./fetchdemo";
-
-
-class Currencies extends React.Component{
+class Currencies extends React.Component {
     state = {
-        curr: []
+        posts: []
     }
 
     componentDidMount() {
-        axios.get(`/currencies`)
+        axios.get(`/api/currencies`)
             .then(res => {
-                const curr = res.data;
-                console.info(curr);
-
-                this.setState({ curr });
+                const posts = res.data;
+                this.setState({ posts });
             });
     }
 
-    render(){
+    render() {
         return (
             <>
-                <Button class="btn-primary">Create currencies</Button>
+
+                <h1>Currencies</h1>
+
                 <Table responsive>
                     <thead>
                     <tr>
@@ -41,7 +30,7 @@ class Currencies extends React.Component{
                     </tr>
                     </thead>
                     <tbody>
-                    {this.state.curr.map(post =>
+                    {this.state.posts.map(post =>
                         <tr>
                             <td>{post.id}</td>
                             <td>{post.name}</td>
@@ -50,7 +39,8 @@ class Currencies extends React.Component{
                     </tbody>
                 </Table>;
             </>
-        );}
+        );
+    }
 }
 
 export default Currencies;

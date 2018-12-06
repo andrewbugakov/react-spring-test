@@ -33,7 +33,7 @@ class Header extends React.Component{
     <NavItem eventKey={4} href="/trtypes">
       Transaction types
     </NavItem>
-    <NavItem eventKey={5} href="/currency">
+    <NavItem eventKey={5} href="/currencies">
       Currencies
     </NavItem>
     <NavItem eventKey={6} href="/users">
