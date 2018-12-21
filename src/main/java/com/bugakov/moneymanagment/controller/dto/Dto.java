@@ -1,4 +1,4 @@
-package com.bugakov.moneymanagment.service;
+package com.bugakov.moneymanagment.controller.dto;
 
 import java.io.Serializable;
 

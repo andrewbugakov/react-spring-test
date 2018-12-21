@@ -5,9 +5,9 @@ import com.bugakov.moneymanagment.model.BaseIdEntity;
 import javax.persistence.EntityManager;
 import java.util.function.Consumer;
 
-public class TransactionHelper {
+class TransactionHelper {
 
-    public static <T extends BaseIdEntity> void doInTransaction(
+    static <T extends BaseIdEntity> void doInTransaction(
             EntityManager entityManager,
             T entity,
             Consumer<T> consumer

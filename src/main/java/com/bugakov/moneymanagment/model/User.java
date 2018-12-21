@@ -21,11 +21,11 @@ public class User extends BaseIdEntity {
     @JsonIgnore
     private List<Transaction> transactions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     @JsonIgnore
     private List<RegularTransaction> regularTransactions = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Incoming> incomings = new ArrayList<>();
 

@@ -12,16 +12,38 @@
 	<mvc:annotation-driven />
 	<bean name="ormHelper" class="com.bugakov.moneymanagment.dao.ORMHelper"/>
 	<bean name="entityManager" class="javax.persistence.EntityManager" factory-bean="ormHelper" factory-method="entityManager"/>
-	<bean name="CurrencyDao" class="com.bugakov.moneymanagment.dao.CurrencyDao">
+	<bean name="currencyDao" class="com.bugakov.moneymanagment.dao.CurrencyDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="incomingDao" class="com.bugakov.moneymanagment.dao.IncomingDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="incomingTypeDao" class="com.bugakov.moneymanagment.dao.IncomingTypeDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="regularTransactionDao" class="com.bugakov.moneymanagment.dao.RegularTransactionDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="transactionDao" class="com.bugakov.moneymanagment.dao.TransactionDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="userDao" class="com.bugakov.moneymanagment.dao.UserDao">
+		<constructor-arg name="entityManager" ref="entityManager"/>
+	</bean>
+	<bean name="transactionTypeDao" class="com.bugakov.moneymanagment.dao.TransactionTypeDao">
 		<constructor-arg name="entityManager" ref="entityManager"/>
 	</bean>
 
+	<mvc:cors>
+		<mvc:mapping path="/**"
+					 allowed-origins="http://localhost:3000"
+					 allowed-methods="GET, POST, PUT, DELETE"
+					 allow-credentials="true"
+					 max-age="123"/>
+	</mvc:cors>
+
 	<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name = "prefix" value = "/WEB-INF/jsp/" />
+		<property name = "prefix" value = "/" />
 		<property name = "suffix" value = ".jsp" />
 	</bean>
-	<!--<bean class="com.bugakov.moneymanagment.service.CurrencyService">-->
-		<!--<constructor-arg name="dao" ref="CurrencyDao"/>-->
-	<!--</bean>-->
-
 </beans>

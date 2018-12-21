@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http auto-config="true">
+        <form-login login-page="/login"/>
+        <logout invalidate-session="true"/>
+        <intercept-url pattern="/denied" access="permitAll"/>
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')||hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="api/**" access="hasRole('ROLE_USER')||hasRole('ROLE_ADMIN')"/>
+        <form-login  authentication-failure-url="/denied" />
+        <csrf disabled="true"/>
+    </http>
+
+    <!--<beans:bean id="dataSource"-->
+    <!--class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+    <!--<beans:property name="driverClassName" value="org.postgresql.Driver" />-->
+    <!--<beans:property name="url" value="jdbc:postgresql://localhost:5432/magic" />-->
+    <!--<beans:property name="username" value="postgres" />-->
+    <!--<beans:property name="password" value="1111" />-->
+    <!--</beans:bean>-->
+
+    <user-service>
+        <user name="user" password="user" authorities="ROLE_USER"/>
+        <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
+    </user-service>
+
+    <!--<beans:bean id="bcrypt" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>-->
+    <!--<authentication-manager alias="authenticationManager">-->
+    <!--<authentication-provider>-->
+    <!--<password-encoder ref="bcrypt"/>-->
+    <!--<jdbc-user-service id="jdbcUserService" data-source-ref="dataSource"-->
+    <!--users-by-username-query="-->
+    <!--select login, password, 1 as enabled-->
+    <!--from usr where login=?"-->
+    <!--authorities-by-username-query="-->
+    <!--select u.login, `USER` from usr u-->
+    <!--where u.username=?"-->
+    <!--/>-->
+    <!--</authentication-provider>-->
+    <!--</authentication-manager>-->
+</beans:beans>
