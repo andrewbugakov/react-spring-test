@@ -14,7 +14,7 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
-@RequestMapping("/api/trtype")
+@RequestMapping("/api/trtypes")
 public class TransactionTypeController implements Controller<TransactionType, SimpleDto> {
     private final TransactionTypeDao dao;
 

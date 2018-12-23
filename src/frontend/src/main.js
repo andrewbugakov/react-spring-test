@@ -1,26 +1,38 @@
 import React from 'react'
 import { BrowserRouter,Switch, Route } from 'react-router-dom'
-import LoginForm from './login.js'
-import FetchDemo from './fetchdemo.js'
-import Transactions from './transactions.js'
-import Incomings from './incomings.js'
-import Error404 from './404.js'
-import Currencies from "./currencies";
-// The Main component renders one of the three provided
-// Routes (provided that one matches). Both the /roster
-// and /schedule routes will match any pathname that starts
-// with /roster or /schedule. The / route will only match
-// when the pathname is exactly the string "/"
+import Error404 from './support/404.js'
+import HelloComponent from './support/HelloComponent.js';
+import Currencies from './currencies/Currencies';
+import Currency from './currencies/Currency';
+import Incoming from './incoming/Incoming';
+import Incomings from './incoming/Incomings';
+import IncomingType from './inctype/IncomingType';
+import IncomingTypes from './inctype/IncomingTypes';
+import Transaction from './transaction/Transaction';
+import Transactions from './transaction/Transactions';
+import TransactionType from './trtype/TransactionType';
+import TransactionTypes from './trtype/TransactionTypes';
+import Users from './users/Users';
+import User from './users/User';
 const Main = () => (
   <main>
       <BrowserRouter>
             <Switch>
-            <Route exact path='/' component={LoginForm}/>
-            <Route path='/fetch' component={FetchDemo} subreddit="reactjs"/>
-            <Route path='/transactions' component={Transactions}/>
-            <Route path='/incomings' component={Incomings}/>
-            <Route path='/currencies' component={Currencies}/>
-            <Route path='/currencies/:id' component={Child}/>
+            <Route exact path='/' component={HelloComponent}/>
+            <Route  path='/currencies' component={Currencies}/>
+            <Route  path='/currency' component={Currency}/>
+            <Route  path='/incomings' component={Incomings}/>
+            <Route  path='/incoming' component={Incoming}/>
+            <Route  path='/inctypes' component={IncomingTypes}/>
+            <Route  path='/inctype' component={IncomingType}/>
+
+            <Route  path='/transaction' component={Transaction}/>
+            <Route  path='/transactions' component={Transactions}/>
+            <Route  path='/trtype' component={TransactionType}/>
+            <Route  path='/trtypes' component={TransactionTypes}/>
+            <Route  path='/users' component={Users}/>
+            <Route  path='/user' component={User}/>
+            
 
 
             <Route component={Error404}/>
@@ -29,13 +41,4 @@ const Main = () => (
         </BrowserRouter>  
   </main>
 )
-
-function Child({ match }) {
-    return (
-        <div>
-            <h3>ID: {match.params.id}</h3>
-        </div>
-    );
-}
-
 export default Main

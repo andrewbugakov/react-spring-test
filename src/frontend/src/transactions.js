@@ -1,14 +1,7 @@
 import React from 'react';
-import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
-import '../node_modules/jquery/dist/jquery.slim.min.js';
-
 // import ReactDOM from 'react-dom';
 import Table from 'react-bootstrap/lib/Table';
 import Button from 'react-bootstrap/lib/Button';
-
-
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
 
 class Transactions extends React.Component{
     componentDidMount(){

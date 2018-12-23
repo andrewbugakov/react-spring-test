@@ -1,6 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/js/bootstrap.min';
-import 'jquery/dist/jquery.slim.min';
+
 
 // import ReactDOM from 'react-dom';
 import Navbar from 'react-bootstrap/lib/Navbar';
@@ -8,16 +7,13 @@ import Nav from 'react-bootstrap/lib/Nav';
 
 import NavItem from 'react-bootstrap/lib/NavItem';
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-
-
 class Header extends React.Component{
     render(){
         return (
-        <Navbar>
+        <Navbar inverse collapseOnSelect>
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="/">React-Bootstrap</a>
+      <a href="/">Money management</a>
     </Navbar.Brand>
   </Navbar.Header>
   <Nav>

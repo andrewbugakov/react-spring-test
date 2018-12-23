@@ -17,7 +17,7 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RestController
-@RequestMapping("/api/transaction")
+@RequestMapping("/api/transactions")
 public class TransactionController implements Controller<Transaction, TransactionDto> {
     private final TransactionDao dao;
     private final CurrencyDao currencyDao;

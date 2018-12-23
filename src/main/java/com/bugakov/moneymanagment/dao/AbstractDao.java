@@ -42,8 +42,10 @@ public class AbstractDao<T extends BaseIdEntity> {
         CriteriaQuery<T> criteriaQuery = cb.createQuery(clazz);
         Root<T> from = criteriaQuery.from(clazz);
         criteriaQuery.select(from);
-        TypedQuery<T> typedQuery = entityManager.createQuery(criteriaQuery);
-        return typedQuery.getResultList();
+        synchronized (entityManager) {
+            TypedQuery<T> typedQuery = entityManager.createQuery(criteriaQuery);
+            return typedQuery.getResultList();
+        }
     }
 
     public synchronized T findById(Long id) {
